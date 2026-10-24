@@ -1,4 +1,4 @@
-import { AnalysisResult } from '../App';
+import { AnalysisResult } from '../types';
 
 type Props = {
   result: AnalysisResult;
@@ -33,7 +33,7 @@ export function PromptAnalyzer({ result }: Props) {
           <div className="mt-3">
             <span className="text-xs text-gray-500 uppercase tracking-wider">IP/Names: </span>
             <div className="flex flex-wrap gap-2 mt-1">
-              {coreElements.ipNames.map((name, i) => (
+              {coreElements.ipNames.map((name: string, i: number) => (
                 <span key={i} className="px-2 py-1 bg-fuchsia-500/10 border border-fuchsia-500/20 rounded-lg text-xs text-fuchsia-300">
                   {name}
                 </span>
@@ -45,7 +45,7 @@ export function PromptAnalyzer({ result }: Props) {
           <div className="mt-3">
             <span className="text-xs text-gray-500 uppercase tracking-wider">Colors: </span>
             <div className="flex flex-wrap gap-2 mt-1">
-              {coreElements.colors.map((color, i) => (
+              {coreElements.colors.map((color: string, i: number) => (
                 <span key={i} className="px-2 py-1 bg-blue-500/10 border border-blue-500/20 rounded-lg text-xs text-blue-300">
                   {color}
                 </span>
@@ -57,7 +57,7 @@ export function PromptAnalyzer({ result }: Props) {
           <div className="mt-3">
             <span className="text-xs text-gray-500 uppercase tracking-wider">Text in Image: </span>
             <div className="flex flex-wrap gap-2 mt-1">
-              {coreElements.textElements.map((text, i) => (
+              {coreElements.textElements.map((text: string, i: number) => (
                 <span key={i} className="px-2 py-1 bg-amber-500/10 border border-amber-500/20 rounded-lg text-xs text-amber-300 font-mono">
                   "{text}"
                 </span>

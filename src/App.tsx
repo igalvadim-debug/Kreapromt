@@ -4,21 +4,7 @@ import { OutputDisplay } from './components/OutputDisplay';
 import { WorkflowSteps } from './components/WorkflowSteps';
 import { ExamplePrompts } from './components/ExamplePrompts';
 import { generateVisualDescription } from './utils/promptEngine';
-
-export type AnalysisResult = {
-  coreElements: {
-    subject: string;
-    quantity: string;
-    action: string;
-    state: string;
-    ipNames: string[];
-    colors: string[];
-    textElements: string[];
-  };
-  requiresGenerativeReasoning: boolean;
-  generativeSolution: string;
-  enhancedDescription: string;
-};
+import { AnalysisResult } from './types';
 
 export default function App() {
   const [prompt, setPrompt] = useState('');
@@ -32,7 +18,6 @@ export default function App() {
     setResult(null);
     setCurrentStep(1);
 
-    // Simulate processing steps with delays for UX
     setTimeout(() => {
       setCurrentStep(2);
       setTimeout(() => {

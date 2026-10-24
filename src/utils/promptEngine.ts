@@ -1,4 +1,4 @@
-import { AnalysisResult } from '../App';
+import { AnalysisResult } from '../types';
 
 // Comprehensive prompt analysis and visual description generation engine
 
@@ -311,15 +311,15 @@ function buildDesignDescription(coreElements: AnalysisResult['coreElements'], or
   const isPoster = /poster/i.test(originalPrompt);
 
   if (isMenu) {
-    let desc = `A restaurant menu document displayed flat on a surface, viewed from above at a slight angle. The menu has a rectangular format with rounded corners. At the top center, the restaurant name "${coreElements.textElements.find(t => /bella|vista|restaurant|cafe|bar/i.test(t)) || coreElements.ipNames[0] || 'Restaurant Name'}" is displayed in elegant serif typography. Below the name, the menu is divided into clearly labeled sections.`;
+    let desc = `A restaurant menu document displayed flat on a surface, viewed from above at a slight angle. The menu has a rectangular format with rounded corners. At the top center, the restaurant name "${coreElements.textElements.find((t: string) => /bella|vista|restaurant|cafe|bar/i.test(t)) || coreElements.ipNames[0] || 'Restaurant Name'}" is displayed in elegant serif typography. Below the name, the menu is divided into clearly labeled sections.`;
 
     if (coreElements.textElements.length > 0) {
       desc += ` The sections present are: `;
-      const sections = coreElements.textElements.filter(t => /antipasti|pasta|dessert|appetizer|main|drink|beverage/i.test(t));
+      const sections = coreElements.textElements.filter((t: string) => /antipasti|pasta|dessert|appetizer|main|drink|beverage/i.test(t));
       if (sections.length > 0) {
-        desc += sections.map(s => `"${s}"`).join(', ');
+        desc += sections.map((s: string) => `"${s}"`).join(', ');
       } else {
-        desc += coreElements.textElements.map(t => `"${t}"`).join(', ');
+        desc += coreElements.textElements.map((t: string) => `"${t}"`).join(', ');
       }
       desc += `. Each section has a bold header followed by individual dish entries with the dish name on the left and the price aligned to the right. The entries are separated by thin horizontal rules or whitespace.`;
     }
